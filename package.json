@@ -1,0 +1,24 @@
+{
+  "name": "sargs",
+  "version": "2.0.0",
+  "description": "javascript implementation of pattern strategy",
+  "main": "sargs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rombu/sargs.git"
+  },
+  "keywords": [
+    "pattern strategy",
+    "arguments",
+    "sargs"
+  ],
+  "author": "rombu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rombu/sargs/issues"
+  },
+  "homepage": "https://github.com/rombu/sargs#readme"
+}
