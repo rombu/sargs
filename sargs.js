@@ -2,11 +2,38 @@ function sargs(args){
 	if (!(this instanceof sargs)) {
 		return new sargs(args)
 	}
+	let self = this
 	var lets = this.lets = {}
 	lets.counts = {}
 	lets.types = {}
+
+	self.args = function args(){
+		var args = Array.prototype.slice.call(arguments)
+		var lets = self.lets
+		var who = self.isWho
+		var array = []
+		for (var index = 0; index < args.length; index++) {
+			var type = who(args[index])
+			array.push(type.toLowerCase())
+		}
+		var result
+		var handler = lets.types[array.join(' ')] || lets.counts['' + args.length] || lets.handler
+		if (typeof handler === 'function') {
+			result = handler.apply(lets.self || this, args)
+		}
+		if (lets.result) {
+			result = lets.result
+		}
+		return result
+	}
+
+	self.arguments = function(){
+		return this.args.apply(this, arguments[0])
+	}
 }
+
 module.exports = sargs
+
 sargs.prototype.self = function(object){
 	if (object) {
 		this.lets.self = object
@@ -73,28 +100,4 @@ sargs.prototype.types = function(types, handler){
 		}
 	}
 	return this
-}
-
-sargs.prototype.args = function args(){
-	var args = Array.prototype.slice.call(arguments)
-	var lets = this.lets
-	var who = lets.who || this.isWho
-	var array = []
-	for (var index = 0; index < args.length; index++) {
-		var type = who(args[index])
-		array.push(type.toLowerCase())
-	}
-	var result
-	var handler = lets.types[array.join(' ')] || lets.counts['' + args.length] || lets.handler
-	if (typeof handler === 'function') {
-		result = handler.apply(lets.self || this, args)
-	}
-	if (lets.result) {
-		result = lets.result
-	}
-	return result
-}
-
-sargs.prototype.arguments = function(){
-	return this.args.apply(this, arguments[0])
 }
