@@ -2,7 +2,7 @@ function sargs(args){
 	if (!(this instanceof sargs)) {
 		return new sargs(args)
 	}
-	let self = this
+	var self = this
 	var lets = this.lets = {}
 	lets.counts = {}
 	lets.types = {}
