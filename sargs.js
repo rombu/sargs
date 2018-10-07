@@ -1,4 +1,4 @@
-module.exports = function sargs(args){
+function sargs(args){
 	if (!(this instanceof sargs)) {
 		return new sargs(args)
 	}
@@ -6,7 +6,7 @@ module.exports = function sargs(args){
 	lets.counts = {}
 	lets.types = {}
 }
-
+module.exports = sargs
 sargs.prototype.self = function(object){
 	if (object) {
 		this.lets.self = object
