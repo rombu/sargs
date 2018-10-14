@@ -1,6 +1,11 @@
 # sargs
 pattern strategy
 
+# TODO
+- add the ability to check your types
+- formating README.md
+- relese
+
 ### the description
 	implementation of pattern strategy
 
