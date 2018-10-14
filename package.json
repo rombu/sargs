@@ -1,6 +1,6 @@
 {
   "name": "sargs",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "javascript implementation of pattern strategy",
   "main": "sargs.js",
   "scripts": {
